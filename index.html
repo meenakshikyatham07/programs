@@ -1,37 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Website</title>
-    <!-- Link to your external CSS stylesheet -->
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Flavor & Flame offers handcrafted meals, fresh ingredients, and warm hospitality in a vibrant food experience."
+    />
+    <title>Flavor & Flame | Fresh Food, Great Taste</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="navbar container">
+        <div class="brand">
+          <span class="brand-mark">F&F</span>
+          <span>Flavor & Flame</span>
+        </div>
 
-    <header>
-        <h1>My Website Homepage</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#menu">Menu</a>
+          <a href="#about">About</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <button class="nav-button">Book a Table</button>
+      </nav>
     </header>
 
     <main>
-        <section>
-            <h2>Hello, World!</h2>
-            <p>This is the main landing page of your website.</p>
-        </section>
+      <section id="home" class="hero">
+        <div class="container hero-inner">
+          <div class="hero-content">
+            <p class="eyebrow">Freshly made • Locally sourced</p>
+            <h1>Where every meal feels like a celebration.</h1>
+            <p class="hero-text">
+              Discover chef-crafted dishes, bold flavors, and cozy dining moments designed for food lovers.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-btn" href="#menu">Explore Menu</a>
+              <a class="secondary-btn" href="#contact">Reserve Now</a>
+            </div>
+
+            <ul class="hero-highlights" aria-label="restaurant highlights">
+              <li>15 min fresh prep</li>
+              <li>Organic ingredients</li>
+              <li>4.9 rating from guests</li>
+            </ul>
+          </div>
+
+          <div class="hero-visual" aria-label="Food dish showcase">
+            <div class="dish-card large">
+              <img
+                src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"
+                alt="Delicious gourmet pasta dish"
+              />
+            </div>
+            <div class="floating-card card-one">
+              <span>Chef Special</span>
+              <strong>Truffle Pasta</strong>
+            </div>
+            <div class="floating-card card-two">
+              <span>Today</span>
+              <strong>15% Off</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features container">
+        <article class="feature-item">
+          <div class="icon">🌿</div>
+          <h3>Fresh Ingredients</h3>
+          <p>Only seasonal produce and premium ingredients make it to our kitchen.</p>
+        </article>
+        <article class="feature-item">
+          <div class="icon">🔥</div>
+          <h3>Fire-Grilled Taste</h3>
+          <p>Our signature cooking techniques add smoky depth and rich flavor.</p>
+        </article>
+        <article class="feature-item">
+          <div class="icon">🚚</div>
+          <h3>Quick Delivery</h3>
+          <p>Enjoy restaurant-quality meals at home with fresh and fast delivery.</p>
+        </article>
+      </section>
+
+      <section id="menu" class="menu-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow accent">Our favorites</p>
+            <h2>Popular dishes</h2>
+          </div>
+
+          <div class="menu-filters" aria-label="Filter menu items">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="starters">Starters</button>
+            <button class="filter-btn" data-filter="main">Main Course</button>
+            <button class="filter-btn" data-filter="desserts">Desserts</button>
+            <button class="filter-btn" data-filter="drinks">Drinks</button>
+          </div>
+
+          <div class="menu-grid">
+            <article class="menu-item" data-category="starters">
+              <img
+                src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=80"
+                alt="Crispy calamari starter"
+              />
+              <div class="menu-copy">
+                <div class="menu-topline">
+                  <h3>Crispy Calamari</h3>
+                  <span>$12</span>
+                </div>
+                <p>Lightly fried and served with chili-lime aioli.</p>
+              </div>
+            </article>
+
+            <article class="menu-item" data-category="main">
+              <img
+                src="https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80"
+                alt="Grilled steak meal"
+              />
+              <div class="menu-copy">
+                <div class="menu-topline">
+                  <h3>Grilled Steak</h3>
+                  <span>$26</span>
+                </div>
+                <p>Perfectly seared sirloin with roasted vegetables and herb butter.</p>
+              </div>
+            </article>
+
+            <article class="menu-item" data-category="main">
+              <img
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
+                alt="Creamy mushroom pasta bowl"
+              />
+              <div class="menu-copy">
+                <div class="menu-topline">
+                  <h3>Mushroom Cream Pasta</h3>
+                  <span>$18</span>
+                </div>
+                <p>Silky sauce, wild mushrooms, parmesan, and fresh herbs.</p>
+              </div>
+            </article>
+
+            <article class="menu-item" data-category="desserts">
+              <img
+                src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80"
+                alt="Chocolate dessert"
+              />
+              <div class="menu-copy">
+                <div class="menu-topline">
+                  <h3>Molten Chocolate</h3>
+                  <span>$10</span>
+                </div>
+                <p>Warm chocolate cake with vanilla bean cream and berries.</p>
+              </div>
+            </article>
+
+            <article class="menu-item" data-category="drinks">
+              <img
+                src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=80"
+                alt="Fruit smoothie"
+              />
+              <div class="menu-copy">
+                <div class="menu-topline">
+                  <h3>Berry Citrus Fizz</h3>
+                  <span>$8</span>
+                </div>
+                <p>Fresh berries, orange zest, sparkling water, and mint.</p>
+              </div>
+            </article>
+
+            <article class="menu-item" data-category="starters">
+              <img
+                src="https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&w=900&q=80"
+                alt="Fresh salad starter"
+              />
+              <div class="menu-copy">
+                <div class="menu-topline">
+                  <h3>Garden Harvest Salad</h3>
+                  <span>$11</span>
+                </div>
+                <p>Mixed greens, avocado, seeds, and citrus vinaigrette.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about-section">
+        <div class="container about-grid">
+          <div class="about-image">
+            <img
+              src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80"
+              alt="Chef preparing a meal"
+            />
+          </div>
+
+          <div class="about-content">
+            <p class="eyebrow accent">About us</p>
+            <h2>A warm dining experience built around flavor.</h2>
+            <p>
+              At Flavor & Flame, we blend culinary creativity with everyday comfort. Every dish is prepared with care, using local produce, inspired recipes, and a passion for memorable flavors.
+            </p>
+            <p>
+              Whether you are enjoying a relaxed lunch, a romantic dinner, or a family gathering, our team is here to serve a beautiful meal with genuine hospitality.
+            </p>
+            <ul class="about-points">
+              <li>Seasonal menu updates</li>
+              <li>Family-friendly dining</li>
+              <li>Private event bookings</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews" class="testimonial-section">
+        <div class="container">
+          <div class="section-heading center">
+            <p class="eyebrow accent">Guest reviews</p>
+            <h2>People keep coming back for more</h2>
+          </div>
+
+          <div class="testimonial-grid">
+            <blockquote>
+              “The food was rich, vibrant, and beautifully presented. It felt like a five-star experience without the formal fuss.”
+              <footer>— Maria K.</footer>
+            </blockquote>
+            <blockquote>
+              “Their pasta and desserts are incredible. We booked for a birthday and the whole evening felt special.”
+              <footer>— Daniel P.</footer>
+            </blockquote>
+            <blockquote>
+              “Fresh ingredients, friendly staff, and the best brunch in town. Highly recommended.”
+              <footer>— Sarah T.</footer>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section">
+        <div class="container contact-box">
+          <div class="contact-copy">
+            <p class="eyebrow accent">Reserve your table</p>
+            <h2>Make your next meal a memorable one.</h2>
+            <p>
+              Join us for lunch, dinner, or a special celebration. We’d love to welcome you in person.
+            </p>
+            <div class="contact-details">
+              <p>📍 128 Market Street, Downtown</p>
+              <p>📞 (555) 345-7788</p>
+              <p>✉️ hello@flavorandflame.com</p>
+            </div>
+          </div>
+
+          <form class="reservation-form">
+            <label>
+              Name
+              <input type="text" placeholder="Your name" />
+            </label>
+            <label>
+              Email
+              <input type="email" placeholder="Your email" />
+            </label>
+            <label>
+              Date
+              <input type="date" />
+            </label>
+            <label>
+              Guests
+              <select>
+                <option>2 Guests</option>
+                <option>4 Guests</option>
+                <option>6 Guests</option>
+                <option>8+ Guests</option>
+              </select>
+            </label>
+            <button type="submit" class="primary-btn full-width">Reserve</button>
+          </form>
+        </div>
+      </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Your Name. All rights reserved.</p>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Flavor & Flame. All rights reserved.</p>
+        <div class="socials" aria-label="social media links">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Pinterest</a>
+        </div>
+      </div>
     </footer>
 
-    <!-- Link to your JavaScript file -->
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
