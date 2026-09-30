@@ -1,392 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ludo Game</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .container {
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
-        }
-
-        .game-board {
-            width: 600px;
-            height: 600px;
-            background-color: #fff;
-            border: 5px solid #333;
-            position: relative;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-
-        .cell {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            border: 1px solid #ccc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 10px;
-            cursor: pointer;
-        }
-
-        .cell.green { background-color: #90EE90; }
-        .cell.yellow { background-color: #FFFF99; }
-        .cell.red { background-color: #FFB6C6; }
-        .cell.blue { background-color: #87CEEB; }
-
-        .cell.start {
-            border: 3px solid #333;
-            font-weight: bold;
-        }
-
-        .cell.home {
-            background-color: #FFD700 !important;
-            border: 2px dashed #333;
-        }
-
-        .piece {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            position: absolute;
-            cursor: grab;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            color: white;
-            font-size: 12px;
-            z-index: 10;
-        }
-
-        .piece.green { background-color: #228B22; }
-        .piece.yellow { background-color: #FFD700; border: 2px solid #333; }
-        .piece.red { background-color: #DC143C; }
-        .piece.blue { background-color: #00008B; }
-
-        .piece:active { cursor: grabbing; }
-
-        .sidebar {
-            width: 250px;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        }
-
-        .info {
-            margin-bottom: 20px;
-        }
-
-        .info h3 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-
-        .dice-section {
-            text-align: center;
-            padding: 20px;
-            background-color: #f0f0f0;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        .dice {
-            width: 60px;
-            height: 60px;
-            background-color: white;
-            border: 3px solid #333;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 36px;
-            font-weight: bold;
-            margin: 0 auto 10px;
-            cursor: pointer;
-            transition: transform 0.1s;
-        }
-
-        .dice:hover { transform: scale(1.1); }
-
-        .dice:active { transform: scale(0.95); }
-
-        .player-info {
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-
-        .player-info.green { background-color: #90EE90; color: #228B22; }
-        .player-info.yellow { background-color: #FFFF99; color: #FFD700; }
-        .player-info.red { background-color: #FFB6C6; color: #DC143C; }
-        .player-info.blue { background-color: #87CEEB; color: #00008B; }
-
-        .player-info.active {
-            border: 3px solid #333;
-            transform: scale(1.05);
-        }
-
-        .status {
-            background-color: #f9f9f9;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            font-size: 13px;
-            min-height: 40px;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #667eea;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background-color: #764ba2;
-        }
-
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playable Ludo Game</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;background:linear-gradient(135deg,#667eea,#764ba2)}
+.container{display:flex;gap:25px;align-items:flex-start}.game-board{width:600px;height:600px;position:relative;background:#fff;border:5px solid #222;box-shadow:0 10px 35px #0005}.cell{position:absolute;width:40px;height:40px;border:1px solid #bbb;display:flex;align-items:center;justify-content:center;font-size:10px}.cell.green{background:#b8efb8}.cell.yellow{background:#fff4a8}.cell.red{background:#ffc0cb}.cell.blue{background:#addcf0}.cell.start{border:3px solid #222}.home{width:200px;height:200px;position:absolute;border:3px solid #222;border-radius:12px;z-index:1}.home.green{background:#90ee90}.home.yellow{background:#ffff99}.home.red{background:#ffb6c6}.home.blue{background:#87ceeb}.piece{width:30px;height:30px;border-radius:50%;position:absolute;z-index:5;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold;border:2px solid #222;cursor:pointer;transition:all .25s}.piece.green{background:#228b22}.piece.yellow{background:#d4a900}.piece.red{background:#dc143c}.piece.blue{background:#00008b}.piece.movable{outline:4px solid #fff;box-shadow:0 0 0 6px #333;animation:pulse 1s infinite}@keyframes pulse{50%{transform:scale(1.12)}}.sidebar{width:260px;background:#fff;padding:20px;border-radius:12px;box-shadow:0 5px 20px #0004}.sidebar h1{font-size:24px;margin-bottom:18px;color:#333}.dice-section{text-align:center;background:#f0f0f0;padding:18px;border-radius:8px}.dice{width:65px;height:65px;margin:10px auto;border:3px solid #333;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:38px;font-weight:bold;transition:transform .4s}.button{width:100%;padding:11px;margin-top:10px;border:0;border-radius:6px;background:#667eea;color:white;font-weight:bold;cursor:pointer}.button:hover{background:#764ba2}.button:disabled{background:#aaa;cursor:not-allowed}.player-info{padding:10px;margin-top:8px;border-radius:6px;font-weight:bold}.player-info.green{background:#b8efb8;color:#176b17}.player-info.yellow{background:#fff4a8;color:#806600}.player-info.red{background:#ffc0cb;color:#a00020}.player-info.blue{background:#addcf0;color:#00008b}.player-info.active{outline:3px solid #222;transform:scale(1.04)}.status{margin-top:15px;padding:12px;background:#f7f7f7;border-radius:6px;line-height:1.4;min-height:55px;font-size:14px}.hint{font-size:12px;color:#666;margin-top:12px;line-height:1.4}@media(max-width:930px){.container{transform:scale(.82);transform-origin:top center;margin-bottom:-100px}}@media(max-width:700px){.container{flex-direction:column;align-items:center;transform:scale(.58);margin-bottom:-230px}.sidebar{width:600px}}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="game-board" id="gameBoard"></div>
-        <div class="sidebar">
-            <h2 style="margin-bottom: 20px; color: #333;">Ludo Game</h2>
-            
-            <div class="dice-section">
-                <div class="info">
-                    <h3>Roll Dice</h3>
-                </div>
-                <div class="dice" id="dice">🎲</div>
-                <button id="rollBtn" onclick="rollDice()">Roll Dice</button>
-            </div>
-
-            <div class="info">
-                <h3>Players</h3>
-                <div id="playersContainer"></div>
-            </div>
-
-            <div class="status">
-                <div id="statusText">Press "Roll Dice" to start!</div>
-            </div>
-
-            <button onclick="resetGame()">Reset Game</button>
-        </div>
-    </div>
-
-    <script>
-        const BOARD_SIZE = 600;
-        const CELL_SIZE = 40;
-        const CELLS_PER_ROW = BOARD_SIZE / CELL_SIZE;
-        const TOTAL_CELLS = CELLS_PER_ROW * CELLS_PER_ROW;
-
-        let game = {
-            currentPlayer: 0,
-            diceValue: 0,
-            players: [
-                { color: 'green', pieces: [0, 0, 0, 0], positions: [-1, -1, -1, -1], home: [] },
-                { color: 'yellow', pieces: [0, 0, 0, 0], positions: [-1, -1, -1, -1], home: [] },
-                { color: 'red', pieces: [0, 0, 0, 0], positions: [-1, -1, -1, -1], home: [] },
-                { color: 'blue', pieces: [0, 0, 0, 0], positions: [-1, -1, -1, -1], home: [] }
-            ],
-            diceRolled: false
-        };
-
-        // Initialize board
-        function initializeBoard() {
-            const board = document.getElementById('gameBoard');
-            board.innerHTML = '';
-
-            // Create cells
-            for (let i = 0; i < TOTAL_CELLS; i++) {
-                const cell = document.createElement('div');
-                cell.className = 'cell';
-                
-                const row = Math.floor(i / CELLS_PER_ROW);
-                const col = i % CELLS_PER_ROW;
-                
-                cell.style.left = col * CELL_SIZE + 'px';
-                cell.style.top = row * CELL_SIZE + 'px';
-                
-                // Color coding for different player paths
-                if (row < 5 && col < 5) cell.classList.add('green');
-                else if (row < 5 && col >= 10) cell.classList.add('yellow');
-                else if (row >= 10 && col < 5) cell.classList.add('red');
-                else if (row >= 10 && col >= 10) cell.classList.add('blue');
-
-                // Mark starting positions
-                if ((row === 2 && col === 2) || (row === 2 && col === 12) || 
-                    (row === 12 && col === 2) || (row === 12 && col === 12)) {
-                    cell.classList.add('start');
-                }
-
-                cell.id = `cell-${i}`;
-                board.appendChild(cell);
-            }
-
-            // Create home zones
-            createHomeZones();
-        }
-
-        function createHomeZones() {
-            const board = document.getElementById('gameBoard');
-            const homePositions = [
-                { top: 50, left: 50, color: 'green' },
-                { top: 50, left: 450, color: 'yellow' },
-                { top: 450, left: 50, color: 'red' },
-                { top: 450, left: 450, color: 'blue' }
-            ];
-
-            homePositions.forEach((pos, idx) => {
-                const home = document.createElement('div');
-                home.className = 'cell home';
-                home.style.left = pos.left + 'px';
-                home.style.top = pos.top + 'px';
-                home.style.width = '80px';
-                home.style.height = '80px';
-                home.id = `home-${pos.color}`;
-                board.appendChild(home);
-            });
-        }
-
-        // Create pieces
-        function createPieces() {
-            const board = document.getElementById('gameBoard');
-            game.players.forEach((player, playerIdx) => {
-                for (let i = 0; i < 4; i++) {
-                    const piece = document.createElement('div');
-                    piece.className = `piece ${player.color}`;
-                    piece.id = `piece-${playerIdx}-${i}`;
-                    piece.textContent = i + 1;
-                    piece.draggable = true;
-                    piece.addEventListener('dragstart', handleDragStart);
-                    piece.addEventListener('dragend', handleDragEnd);
-                    
-                    // Position pieces at home
-                    const homePos = getHomePiecePosition(playerIdx, i);
-                    piece.style.left = homePos.x + 'px';
-                    piece.style.top = homePos.y + 'px';
-                    
-                    board.appendChild(piece);
-                }
-            });
-        }
-
-        function getHomePiecePosition(playerIdx, pieceIdx) {
-            const homePositions = [
-                [{ x: 50, y: 50 }, { x: 100, y: 50 }, { x: 50, y: 100 }, { x: 100, y: 100 }],
-                [{ x: 450, y: 50 }, { x: 500, y: 50 }, { x: 450, y: 100 }, { x: 500, y: 100 }],
-                [{ x: 50, y: 450 }, { x: 100, y: 450 }, { x: 50, y: 500 }, { x: 100, y: 500 }],
-                [{ x: 450, y: 450 }, { x: 500, y: 450 }, { x: 450, y: 500 }, { x: 500, y: 500 }]
-            ];
-            return homePositions[playerIdx][pieceIdx];
-        }
-
-        function handleDragStart(e) {
-            e.dataTransfer.effectAllowed = 'move';
-            e.dataTransfer.setData('text/html', this);
-        }
-
-        function handleDragEnd(e) {
-            // Reset cursor
-        }
-
-        // Roll dice
-        function rollDice() {
-            if (game.diceRolled) return;
-
-            const value = Math.floor(Math.random() * 6) + 1;
-            game.diceValue = value;
-            game.diceRolled = true;
-
-            const diceElement = document.getElementById('dice');
-            diceElement.textContent = value;
-            diceElement.style.transform = 'rotateX(360deg) rotateY(360deg)';
-
-            setTimeout(() => {
-                diceElement.style.transform = 'rotateX(0) rotateY(0)';
-                updateStatus(`Player ${game.currentPlayer + 1} rolled a ${value}! Move your pieces.`);
-            }, 500);
-
-            updatePlayerDisplay();
-        }
-
-        function updateStatus(message) {
-            document.getElementById('statusText').textContent = message;
-        }
-
-        function updatePlayerDisplay() {
-            const container = document.getElementById('playersContainer');
-            container.innerHTML = '';
-
-            game.players.forEach((player, idx) => {
-                const playerDiv = document.createElement('div');
-                playerDiv.className = `player-info ${player.color}`;
-                if (idx === game.currentPlayer) playerDiv.classList.add('active');
-                playerDiv.textContent = `Player ${idx + 1} (${player.color.toUpperCase()})`;
-                container.appendChild(playerDiv);
-            });
-        }
-
-        function resetGame() {
-            game = {
-                currentPlayer: 0,
-                diceValue: 0,
-                players: [
-                    { color: 'green', pieces: [0, 0, 0, 0], positions: [-1, -1, -1, -1], home: [] },
-                    { color: 'yellow', pieces: [0, 0, 0, 0], positions: [-1, -1, -1, -1], home: [] },
-                    { color: 'red', pieces: [0, 0, 0, 0], positions: [-1, -1, -1, -1], home: [] },
-                    { color: 'blue', pieces: [0, 0, 0, 0], positions: [-1, -1, -1, -1], home: [] }
-                ],
-                diceRolled: false
-            };
-
-            initializeBoard();
-            createPieces();
-            updatePlayerDisplay();
-            updateStatus('Press "Roll Dice" to start!');
-            document.getElementById('dice').textContent = '🎲';
-        }
-
-        // Initialize game
-        window.addEventListener('load', () => {
-            initializeBoard();
-            createPieces();
-            updatePlayerDisplay();
-        });
-    </script>
+<div class="container">
+  <div class="game-board" id="gameBoard"></div>
+  <aside class="sidebar">
+    <h1>🎲 Ludo Game</h1>
+    <div class="dice-section"><strong id="turnTitle">Player 1's turn</strong><div class="dice" id="dice">🎲</div><button class="button" id="rollBtn">Roll Dice</button></div>
+    <div style="margin-top:18px"><strong>Players</strong><div id="playersContainer"></div></div>
+    <div class="status" id="statusText">Roll the dice to start.</div>
+    <div class="hint">Roll a 6 to bring a piece out. After rolling, click a glowing piece to move it.</div>
+    <button class="button" id="resetBtn">Reset Game</button>
+  </aside>
+</div>
+<script>
+const SIZE=40;
+// 52 spaces around the outside of the 15x15 board.
+const path=[];
+for(let c=0;c<15;c++)path.push({x:c,y:6});
+for(let r=7;r<15;r++)path.push({x:14,y:r});
+for(let c=13;c>=0;c--)path.push({x:c,y:14});
+for(let r=13;r>=0;r--)path.push({x:0,y:r});
+for(let c=1;c<15;c++)path.push({x:c,y:0});
+for(let r=1;r<6;r++)path.push({x:14,y:r});
+// Use the first 52 unique route spaces (the final two corners are not used).
+const route=path.slice(0,52), starts=[0,13,26,39];
+const colors=['green','yellow','red','blue'];
+let game;
+function newGame(){game={current:0,dice:0,rolled:false,players:colors.map(color=>({color,positions:[-1,-1,-1,-1]}))};}
+function makeBoard(){const board=document.getElementById('gameBoard');board.innerHTML='';
+  for(let i=0;i<route.length;i++){const cell=document.createElement('div');cell.className='cell';cell.style.left=route[i].x*SIZE+'px';cell.style.top=route[i].y*SIZE+'px';if(i===0||i===13||i===26||i===39)cell.classList.add(colors[starts.indexOf(i)]);cell.classList.toggle('start',starts.includes(i));board.appendChild(cell)}
+  [{c:'green',x:0,y:0},{c:'yellow',x:400,y:0},{c:'red',x:0,y:400},{c:'blue',x:400,y:400}].forEach(h=>{const el=document.createElement('div');el.className='home '+h.c;el.style.left=h.x+'px';el.style.top=h.y+'px';board.appendChild(el)});
+}
+function homePosition(player,index){const spots=[[50,50],[100,50],[50,100],[100,100]];const offsets=[[0,0],[400,0],[0,400],[400,400]][player];return{x:offsets[0]+spots[index][0],y:offsets[1]+spots[index][1]};}
+function piecePosition(player,index){const progress=game.players[player].positions[index];if(progress<0||progress>=52)return homePosition(player,index);const spot=route[(starts[player]+progress)%52];return{x:spot.x*SIZE+5,y:spot.y*SIZE+5};}
+function renderPieces(){const board=document.getElementById('gameBoard');board.querySelectorAll('.piece').forEach(p=>p.remove());game.players.forEach((player,pi)=>player.positions.forEach((_,i)=>{const p=document.createElement('div');p.className='piece '+player.color;p.id=`piece-${pi}-${i}`;p.textContent=i+1;const pos=piecePosition(pi,i);p.style.left=pos.x+'px';p.style.top=pos.y+'px';if(game.rolled&&pi===game.current&&canMove(pi,i))p.classList.add('movable');p.addEventListener('click',()=>movePiece(pi,i));board.appendChild(p)}));}
+function canMove(pi,i){if(!game.rolled||pi!==game.current)return false;const pos=game.players[pi].positions[i];return pos<52&&(pos>=0||game.dice===6)&&(pos<0?1:pos+game.dice)<=52;}
+function rollDice(){if(game.rolled)return;game.dice=Math.floor(Math.random()*6)+1;game.rolled=true;document.getElementById('dice').textContent=game.dice;document.getElementById('dice').style.transform='rotate(360deg)';setTimeout(()=>document.getElementById('dice').style.transform='',350);const movable=game.players[game.current].positions.some((_,i)=>canMove(game.current,i));if(movable){setStatus(`Player ${game.current+1} rolled ${game.dice}. Click a glowing piece.`)}else{setStatus(`Player ${game.current+1} rolled ${game.dice}, but has no valid move.`);setTimeout(nextTurn,900)};update();}
+function movePiece(pi,i){if(!canMove(pi,i))return;const player=game.players[pi];player.positions[i]=player.positions[i]<0?0:player.positions[i]+game.dice;const finished=player.positions[i]===52;game.rolled=false;document.getElementById('dice').textContent='🎲';if(finished)setStatus(`Player ${pi+1} brought piece ${i+1} home!`);else setStatus(`Piece ${i+1} moved ${game.dice} space${game.dice===1?'':'s'}.`);if(game.dice!==6)setTimeout(nextTurn,700);update();}
+function nextTurn(){game.current=(game.current+1)%4;game.rolled=false;game.dice=0;document.getElementById('dice').textContent='🎲';setStatus(`Player ${game.current+1}'s turn. Roll the dice.`);update();}
+function setStatus(t){document.getElementById('statusText').textContent=t;}
+function update(){document.getElementById('turnTitle').textContent=`Player ${game.current+1}'s turn`;document.getElementById('rollBtn').disabled=game.rolled;document.getElementById('playersContainer').innerHTML=game.players.map((p,i)=>`<div class="player-info ${p.color} ${i===game.current?'active':''}">Player ${i+1} (${p.color.toUpperCase()})</div>`).join('');renderPieces();}
+function reset(){newGame();makeBoard();setStatus('Roll the dice to start.');update();}
+document.getElementById('rollBtn').addEventListener('click',rollDice);document.getElementById('resetBtn').addEventListener('click',reset);reset();
+</script>
 </body>
 </html>
